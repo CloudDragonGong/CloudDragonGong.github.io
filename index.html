@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-08 01:15:04 / 修改时间：02:55:12" itemprop="dateCreated datePublished" datetime="2023-04-08T01:15:04+08:00">2023-04-08</time>
+              <time title="创建时间：2023-04-08 01:15:04 / 修改时间：14:05:03" itemprop="dateCreated datePublished" datetime="2023-04-08T01:15:04+08:00">2023-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,72 +226,14 @@
           <blockquote>
 <p>AlexNet是深度学习领域的一个经典卷积神经网络模型，它于2012年在ImageNet挑战赛中夺冠，引起了深度学习研究的广泛关注。下面是AlexNet的详细通俗易懂教程：</p>
 </blockquote>
-<h1 id="AlexNet的背景"><a href="#AlexNet的背景" class="headerlink" title="AlexNet的背景"></a>AlexNet的背景</h1><p>在AlexNet诞生之前，深度学习在计算机视觉领域的应用非常有限。传统的浅层神经网络模型在处理大规模图像分类任务时效果不佳，因此研究人员需要一种新的深度神经网络结构来解决这个问题。</p>
-<h1 id="AlexNet的结构"><a href="#AlexNet的结构" class="headerlink" title="AlexNet的结构"></a>AlexNet的结构</h1><p>AlexNet采用了一种卷积神经网络的结构，包含5个卷积层和3个全连接层。其中，前5个卷积层的激活函数为ReLU（rectified linear unit），后面3个全连接层的激活函数为softmax。</p>
-<p><img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/1.png" alt="111"></p>
-<img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/2.png" alt="精简图" style="zoom:50%;">
-
-
-
-<h2 id="conv1阶段"><a href="#conv1阶段" class="headerlink" title="conv1阶段"></a>conv1阶段</h2><p>输入数据：227×227×3</p>
-<p>卷积核：11×11×3；步长：4；数量（也就是输出个数）：96<br>卷积后数据：55×55×96  （原图N×N，卷积核大小n×n，卷积步长大于1为k，输出维度是(N-n)&#x2F;k+1）<br>relu1后的数据：55×55×96<br>Max pool1的核：3×3，步长：2<br>Max pool1后的数据：27×27×96<br>norm1：local_size&#x3D;5  （LRN(Local Response Normalization） 局部响应归一化）<br>最后的输出：27×27×96</p>
-<p>AlexNet采用了Relu激活函数，取代了之前经常使用的S函数和T函数，Relu函数也很简单：</p>
-<p>ReLU(x) &#x3D; max(x,0)</p>
-<p>AlexNet另一个创新是LRN(Local Response Normalization） 局部响应归一化，LRN模拟神经生物学上一个叫做 侧抑制（lateral inhibitio）的功能，侧抑制指的是被激活的神经元会抑制相邻的神经元。LRN局部响应归一化借鉴侧抑制的思想实现局部抑制，使得响应比较大的值相对更大，提高了模型的泛化能力。<br>LRN只对数据相邻区域做归一化处理，不改变数据的大小和维度。</p>
-<p>LRN概念是在AlexNet模型中首次提出，在GoogLenet中也有应用，但是LRN的实际作用存在争议，如在2015年Very Deep Convolutional Networks for Large-Scale Image Recognition 论文中指出LRN基本没什么用。 </p>
-<p>AlexNet还应用了Overlapping（重叠池化），重叠池化就是池化操作在部分像素上有重合。池化核大小是n×n，步长是k，如果k&#x3D;n，则是正常池化，如果 k&lt;n, 则是重叠池化。官方文档中说明，重叠池化的运用减少了top-5和top-1错误率的0.4%和0.3%。重叠池化有避免过拟合的作用。</p>
-<h2 id="conv2阶段"><a href="#conv2阶段" class="headerlink" title="conv2阶段"></a>conv2阶段</h2><p>输入数据：27×27×96</p>
-<p>卷积核：5×5；步长：1；数量（也就是输出个数）：256<br>卷积后数据：27×27×256  （做了Same padding（相同补白），使得卷积后图像大小不变。）<br>relu2后的数据：27×27×256<br>Max pool2的核：3×3，步长：2<br>Max pool2后的数据：13×13×256   （（27-3）&#x2F;2+1&#x3D;13 ）<br>norm2：local_size&#x3D;5  （LRN(Local Response Normalization） 局部响应归一化）<br>最后的输出：13×13×256</p>
-<p>在AlexNet的conv2中使用了same padding，保持了卷积后图像的宽高不缩小。</p>
-<h2 id="conv3阶段"><a href="#conv3阶段" class="headerlink" title="conv3阶段"></a>conv3阶段</h2><p>输入数据：13×13×256</p>
-<p>卷积核：3×3；步长：1；数量（也就是输出个数）：384<br>卷积后数据：13×13×384  （做了Same padding（相同补白），使得卷积后图像大小不变。）<br>relu3后的数据：13×13×384<br>最后的输出：13×13×384</p>
-<p>conv3层没有Max pool层和norm层</p>
-<h2 id="conv4阶段"><a href="#conv4阶段" class="headerlink" title="conv4阶段"></a>conv4阶段</h2><p>输入数据：13×13×384</p>
-<p>卷积核：3×3；步长：1；数量（也就是输出个数）：384<br>卷积后数据：13×13×384  （做了Same padding（相同补白），使得卷积后图像大小不变。）<br>relu4后的数据：13×13×384<br>最后的输出：13×13×384</p>
-<p>conv4层也没有Max pool层和norm层</p>
-<h2 id="conv5阶段"><a href="#conv5阶段" class="headerlink" title="conv5阶段"></a>conv5阶段</h2><p>输入数据：13×13×384</p>
-<p>卷积核：3×3；步长：1；数量（也就是输出个数）：256<br>卷积后数据：13×13×256  （做了Same padding（相同补白），使得卷积后图像大小不变。）<br>relu5后的数据：13×13×256<br>Max pool5的核：3×3，步长：2<br>Max pool2后的数据：6×6×256   （（13-3）&#x2F;2+1&#x3D;6 ）<br>最后的输出：6×6×256</p>
-<p>conv5层有Max pool，没有norm层</p>
-<h2 id="fc6阶段"><a href="#fc6阶段" class="headerlink" title="fc6阶段"></a>fc6阶段</h2><p>输入数据：6×6×256</p>
-<p>全连接输出：4096×1<br>relu6后的数据：4096×1<br>drop out6后数据：4096×1<br>最后的输出：4096×1</p>
-<p>AlexNet在fc6全连接层引入了drop out的功能。dropout是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率（一般是50%，这种情况下随机生成的网络结构最多）将其暂时从网络中丢弃（保留其权值），不再对前向和反向传输的数据响应。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而相当于每一个mini-batch都在训练不同的网络，drop out可以有效防止模型过拟合，让网络泛化能力更强，同时由于减少了网络复杂度，加快了运算速度。还有一种观点认为drop out有效的原因是对样本增加来噪声，变相增加了训练样本。</p>
-<h2 id="fc7阶段"><a href="#fc7阶段" class="headerlink" title="fc7阶段"></a>fc7阶段</h2><p>输入数据：4096×1</p>
-<p>全连接输出：4096×1<br>relu7后的数据：4096×1<br>drop out7后数据：4096×1<br>最后的输出：4096×1</p>
-<h2 id="fc8阶段"><a href="#fc8阶段" class="headerlink" title="fc8阶段"></a>fc8阶段</h2><p>输入数据：4096×1</p>
-<p>全连接输出：1000</p>
-<p>fc8输出一千种分类的概率</p>
-<h1 id="与LeNet比较"><a href="#与LeNet比较" class="headerlink" title="与LeNet比较"></a>与LeNet比较</h1><img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/4.png" style="zoom:50%;">
-
-<img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/5.png" style="zoom:50%;">
-
-<h1 id="AlexNet的训练"><a href="#AlexNet的训练" class="headerlink" title="AlexNet的训练"></a>AlexNet的训练</h1><p>AlexNet的训练使用了一个GPU集群，使用了一种叫做Dropout的技术来减轻过拟合的问题。此外，为了加快训练速度，AlexNet使用了一个名为“局部响应归一化”的技术来规范化网络中的激活函数输出。</p>
-<h1 id="AlexNet的性能"><a href="#AlexNet的性能" class="headerlink" title="AlexNet的性能"></a>AlexNet的性能</h1><p>在ImageNet挑战赛中，AlexNet的错误率为15.3%，比第二名低了6个百分点，取得了非常好的效果。这表明AlexNet不仅在模型结构上有了重大的突破，而且在训练和优化方面也做出了一些创新。</p>
-<h1 id="AlexNet的应用"><a href="#AlexNet的应用" class="headerlink" title="AlexNet的应用"></a>AlexNet的应用</h1><p>AlexNet的成功推动了深度学习在计算机视觉领域的应用。它的结构和思想被广泛应用于图像分类、目标检测、人脸识别、自然语言处理等各种领域。近年来，随着深度学习技术的发展，AlexNet的结构已经被逐渐优化和改进，但它始终是深度学习领域的一个经典模型。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line">net = nn.Sequential(</span><br><span class="line">    <span class="comment"># 这里使用一个11*11的更大窗口来捕捉对象。</span></span><br><span class="line">    <span class="comment"># 同时，步幅为4，以减少输出的高度和宽度。</span></span><br><span class="line">    <span class="comment"># 另外，输出通道的数目远大于LeNet</span></span><br><span class="line">    nn.Conv2d(<span class="number">1</span>, <span class="number">96</span>, kernel_size=<span class="number">11</span>, stride=<span class="number">4</span>, padding=<span class="number">1</span>), nn.ReLU(),</span><br><span class="line">    nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>),</span><br><span class="line">    <span class="comment"># 减小卷积窗口，使用填充为2来使得输入与输出的高和宽一致，且增大输出通道数</span></span><br><span class="line">    nn.Conv2d(<span class="number">96</span>, <span class="number">256</span>, kernel_size=<span class="number">5</span>, padding=<span class="number">2</span>), nn.ReLU(),</span><br><span class="line">    nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>),</span><br><span class="line">    <span class="comment"># 使用三个连续的卷积层和较小的卷积窗口。</span></span><br><span class="line">    <span class="comment"># 除了最后的卷积层，输出通道的数量进一步增加。</span></span><br><span class="line">    <span class="comment"># 在前两个卷积层之后，汇聚层不用于减少输入的高度和宽度</span></span><br><span class="line">    nn.Conv2d(<span class="number">256</span>, <span class="number">384</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>), nn.ReLU(),</span><br><span class="line">    nn.Conv2d(<span class="number">384</span>, <span class="number">384</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>), nn.ReLU(),</span><br><span class="line">    nn.Conv2d(<span class="number">384</span>, <span class="number">256</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>), nn.ReLU(),</span><br><span class="line">    nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>),</span><br><span class="line">    nn.Flatten(),</span><br><span class="line">    <span class="comment"># 这里，全连接层的输出数量是LeNet中的好几倍。使用dropout层来减轻过拟合</span></span><br><span class="line">    nn.Linear(<span class="number">6400</span>, <span class="number">4096</span>), nn.ReLU(),</span><br><span class="line">    nn.Dropout(p=<span class="number">0.5</span>),</span><br><span class="line">    nn.Linear(<span class="number">4096</span>, <span class="number">4096</span>), nn.ReLU(),</span><br><span class="line">    nn.Dropout(p=<span class="number">0.5</span>),</span><br><span class="line">    <span class="comment"># 最后是输出层。由于这里使用Fashion-MNIST，所以用类别数为10，而非论文中的1000</span></span><br><span class="line">    nn.Linear(<span class="number">4096</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
-
-<p>构造一个高度和宽度都为224的单通道数据，来观察每一层输出的形状</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = torch.randn(<span class="number">1</span>, <span class="number">1</span>, <span class="number">224</span>, <span class="number">224</span>)</span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> net:</span><br><span class="line">    X=layer(X)</span><br><span class="line">    <span class="built_in">print</span>(layer.__class__.__name__,<span class="string">&#x27;output shape:\t&#x27;</span>,X.shape)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Conv2d output shape:         torch.Size([1, 96, 54, 54])</span><br><span class="line">ReLU output shape:   torch.Size([1, 96, 54, 54])</span><br><span class="line">MaxPool2d output shape:      torch.Size([1, 96, 26, 26])</span><br><span class="line">Conv2d output shape:         torch.Size([1, 256, 26, 26])</span><br><span class="line">ReLU output shape:   torch.Size([1, 256, 26, 26])</span><br><span class="line">MaxPool2d output shape:      torch.Size([1, 256, 12, 12])</span><br><span class="line">Conv2d output shape:         torch.Size([1, 384, 12, 12])</span><br><span class="line">ReLU output shape:   torch.Size([1, 384, 12, 12])</span><br><span class="line">Conv2d output shape:         torch.Size([1, 384, 12, 12])</span><br><span class="line">ReLU output shape:   torch.Size([1, 384, 12, 12])</span><br><span class="line">Conv2d output shape:         torch.Size([1, 256, 12, 12])</span><br><span class="line">ReLU output shape:   torch.Size([1, 256, 12, 12])</span><br><span class="line">MaxPool2d output shape:      torch.Size([1, 256, 5, 5])</span><br><span class="line">Flatten output shape:        torch.Size([1, 6400])</span><br><span class="line">Linear output shape:         torch.Size([1, 4096])</span><br><span class="line">ReLU output shape:   torch.Size([1, 4096])</span><br><span class="line">Dropout output shape:        torch.Size([1, 4096])</span><br><span class="line">Linear output shape:         torch.Size([1, 4096])</span><br><span class="line">ReLU output shape:   torch.Size([1, 4096])</span><br><span class="line">Dropout output shape:        torch.Size([1, 4096])</span><br><span class="line">Linear output shape:         torch.Size([1, 10])</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="更多细节"><a href="#更多细节" class="headerlink" title="更多细节"></a>更多细节</h1><ul>
-<li><p>激活函数从 sigmoid 变到了 ReLu(减缓梯度消失)</p>
-</li>
-<li><p>隐藏全连接层后加入了丢弃层</p>
-</li>
-<li><p>数据增强</p>
-</li>
-</ul>
-<img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/3.png" style="zoom:50%;">
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>AlexNet 是更大更深的 LeNet，10x 参数个数，260x 计算复杂度</li>
-<li>新进入了丢弃法，ReLU，最大池化层，和数据增强</li>
-<li>AlexNet 赢下了 2012mageNet 竞赛后，标志着新的一轮神经网络热潮的开始</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
