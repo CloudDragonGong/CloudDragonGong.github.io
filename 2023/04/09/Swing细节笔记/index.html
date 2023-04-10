@@ -22,15 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="云龙博客">
-<meta property="og:url" content="http://example.com/categories/%E5%90%8E%E7%AB%AF/index.html">
+  <meta name="description" content="本篇笔记基于菜鸟教程编写的细节笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swing细节笔记">
+<meta property="og:url" content="http://example.com/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="云龙博客">
+<meta property="og:description" content="本篇笔记基于菜鸟教程编写的细节笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-09T14:00:55.000Z">
+<meta property="article:modified_time" content="2023-04-09T14:25:14.319Z">
 <meta property="article:author" content="DragonGong">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="Swing">
+<meta property="article:tag" content="GUI">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/%E5%90%8E%E7%AB%AF/">
+<link rel="canonical" href="http://example.com/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -38,12 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 后端 | 云龙博客</title>
+  <title>Swing细节笔记 | 云龙博客</title>
   
 
 
@@ -151,71 +158,146 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">后端
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="DragonGong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云龙博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Swing细节笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-04-09 22:00:55 / 修改时间：22:25:14" itemprop="dateCreated datePublished" datetime="2023-04-09T22:00:55+08:00">2023-04-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>948</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
-    </div>
+        <blockquote>
+<p>本篇笔记基于<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/java-swing-demo-intro.html">菜鸟教程</a>编写的细节笔记</p>
+</blockquote>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-04-09T22:00:55+08:00"
-              content="2023-04-09">
-          04-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/" itemprop="url">
-            <span itemprop="name">Swing细节笔记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-04-04T12:59:11+08:00"
-              content="2023-04-04">
-          04-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/04/04/java%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">java语法学习</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+<h1 id="frame-pack"><a href="#frame-pack" class="headerlink" title="frame.pack()"></a>frame.pack()</h1><p><code>frame.pack()</code> 是 <code>JFrame</code> 类中的一个方法，它的作用是自动调整窗口的大小，使得所有的组件都能够显示完整，而不会出现滚动条或者被截断的情况。</p>
+<p>在使用 Swing 开发 GUI 应用程序时，通常先将所有的组件添加到容器中，再通过 <code>pack()</code> 方法自动调整窗口大小，最后通过 <code>setVisible(true)</code> 方法显示窗口。这样可以确保窗口的大小刚好能够容纳所有的组件，并且避免了手动计算组件位置和大小的麻烦。</p>
+<h1 id="为什么要另外开一个线程"><a href="#为什么要另外开一个线程" class="headerlink" title="为什么要另外开一个线程"></a>为什么要另外开一个线程</h1><p>这段代码是为了确保创建和显示GUI的操作在Swing事件分派线程（Event Dispatch Thread, EDT）中执行。Swing是单线程的，所有用户交互和GUI组件操作都必须在EDT中完成，否则可能会引起线程安全问题。SwingUtilities.invokeLater()方法是将一个Runnable对象放入EDT的事件队列中，等待EDT空闲时执行。这样，即使在其他线程中调用createAndShowGUI()方法，也可以保证GUI的创建和显示在EDT中执行，从而确保线程安全。</p>
+<p>直接调用 <code>createAndShowGUI()</code> 方法会在当前线程中执行该方法，如果在主线程中执行，则会阻塞主线程，导致界面无法正常响应用户的操作。因此，需要使用 <code>SwingUtilities.invokeLater()</code> 方法来将该方法放到 Swing 事件队列中，等待系统在适当的时机调用该方法，以确保 GUI 界面在单独的线程中被创建并显示，不会阻塞主线程。</p>
+<p>在 Java 中，所有 GUI 相关的操作必须在事件调度线程（Event Dispatch Thread，EDT）中执行，以确保线程安全。如果在主线程中直接调用 <code>createAndShowGUI()</code> 方法，那么 GUI 相关的操作将会在主线程中执行，从而可能会导致 GUI 组件出现异常行为或不可预测的结果。</p>
+<p>为了避免这种情况，推荐使用 <code>SwingUtilities.invokeLater()</code> 方法将 <code>createAndShowGUI()</code> 方法提交到 EDT 中执行。这样，GUI 相关的操作就会在 EDT 中顺序执行，从而避免了线程安全问题和不可预测的结果。同时，因为 <code>invokeLater()</code> 方法是异步的，所以不会阻塞主线程。</p>
 
     </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="DragonGong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="DragonGong 支付宝">
+        <p>支付宝</p>
+      </div>
+
   </div>
-  
-  
-  
+</div>
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+              <a href="/tags/Swing/" rel="tag"><i class="fa fa-tag"></i> Swing</a>
+              <a href="/tags/GUI/" rel="tag"><i class="fa fa-tag"></i> GUI</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/" rel="prev" title="动手学深度学习AlexNet介绍课">
+      <i class="fa fa-chevron-left"></i> 动手学深度学习AlexNet介绍课
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -268,6 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#frame-pack"><span class="nav-number">1.</span> <span class="nav-text">frame.pack()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%A6%E5%A4%96%E5%BC%80%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">为什么要另外开一个线程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
