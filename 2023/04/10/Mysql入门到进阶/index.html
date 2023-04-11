@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本篇是黑马程序员Mysql教程的精简笔记，由于搜索引擎飞速发展和gpt时代的到来，知识获取非常快捷，笔记将会变得越来越言简意骇，直自戳重点和关键疑难点，以及个人的思考和经验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql入门到进阶">
+<meta property="og:url" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="云龙博客">
+<meta property="og:description" content="本篇是黑马程序员Mysql教程的精简笔记，由于搜索引擎飞速发展和gpt时代的到来，知识获取非常快捷，笔记将会变得越来越言简意骇，直自戳重点和关键疑难点，以及个人的思考和经验。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410231711830.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410232613978.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410233851068.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234042883.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234121216.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234414123.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234522806.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234642437.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411130944078.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411131121233.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411131831105.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411132006031.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411161814042.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411162245729.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163245444.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163803877.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163927906.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164000773.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164114592.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164427849.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164445332.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164650609.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165033261.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165147026.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165227993.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165339849.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165539850.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165742981.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174325085.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174419088.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174644911.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174703974.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174717151.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174802276.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174816137.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174848223.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175320074.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175507263.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175519492.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175642285.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175629863.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175958559.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175930212.png">
+<meta property="og:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411180053835.png">
+<meta property="article:published_time" content="2023-04-10T15:11:50.000Z">
+<meta property="article:modified_time" content="2023-04-11T10:01:46.665Z">
+<meta property="article:author" content="DragonGong">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410231711830.png">
+
+<link rel="canonical" href="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Mysql入门到进阶 | 云龙博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">云龙博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="DragonGong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云龙博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mysql入门到进阶
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-10 23:11:50" itemprop="dateCreated datePublished" datetime="2023-04-10T23:11:50+08:00">2023-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-11 18:01:46" itemprop="dateModified" datetime="2023-04-11T18:01:46+08:00">2023-04-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本篇是<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Kr4y1i7ru/?spm_id_from=333.337.search-card.all.click&vd_source=8e348c918e9f7eca8805bd4e1debb74a">黑马程序员Mysql教程</a>的精简笔记，由于搜索引擎飞速发展和gpt时代的到来，知识获取非常快捷，笔记将会变得越来越言简意骇，直自戳重点和关键疑难点，以及个人的思考和经验。</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h1><h2 id="MySQL课程介绍"><a href="#MySQL课程介绍" class="headerlink" title="MySQL课程介绍"></a>MySQL课程介绍</h2><p>Mysql现在是很多企业处理技术必备的技能，不单单要了解它是什么，更重要的是使用它，理解他，优化他，充分发挥他的价值。</p>
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410231711830.png" alt="image-20230410231711830" style="zoom:33%;">
+
+<h2 id="MySQL数据库的相关概念"><a href="#MySQL数据库的相关概念" class="headerlink" title="MySQL数据库的相关概念"></a>MySQL数据库的相关概念</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410232613978.png" alt="image-20230410232613978" style="zoom: 50%;">
+
+<blockquote>
+<p>掌握好SQL是重点，掌握好了它，才是掌握其他数据库的基础</p>
+</blockquote>
+<h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><p>推荐<a target="_blank" rel="noopener" href="https://edu.csdn.net/skill/mysql/mysql-95d0b7e5493e478f85ca49a77a13d194?typeId=81247&ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168099430116782425170329%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168099430116782425170329&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-4-123760428-null-null.142%5Ev82%5Einsert_down38,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B&spm=1018.2226.3001.4187">csdn</a>博客，全面</p>
+<blockquote>
+<p>注意环境变量配置完后重启终端才能有效果</p>
+</blockquote>
+<h2 id="MySQL的启动和连接"><a href="#MySQL的启动和连接" class="headerlink" title="MySQL的启动和连接"></a>MySQL的启动和连接</h2><ul>
+<li>启动</li>
+</ul>
+<p>终端命令行</p>
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410233851068.png" alt="image-20230410233851068" style="zoom:50%;">
+
+<ul>
+<li><p>连接</p>
+<ul>
+<li><p>自带命令工具</p>
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234042883.png" alt="image-20230410234042883" style="zoom:50%;">
+</li>
+<li><p>win命令行</p>
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234121216.png" alt="image-20230410234121216" style="zoom:50%;"></li>
+</ul>
+</li>
+</ul>
+<p>​		注意环境变量的设置</p>
+<h2 id="MySQL数据模型"><a href="#MySQL数据模型" class="headerlink" title="MySQL数据模型"></a>MySQL数据模型</h2><h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><p>通过表存储的数据库</p>
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234414123.png" alt="image-20230410234414123" style="zoom:50%;">
+
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234522806.png" alt="image-20230410234522806" style="zoom:50%;">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230410234642437.png" alt="image-20230410234642437" style="zoom:50%;">
+
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="SQL通用语法和分类"><a href="#SQL通用语法和分类" class="headerlink" title="SQL通用语法和分类"></a>SQL通用语法和分类</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411130944078.png" alt="image-20230411130944078" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411131121233.png" alt="image-20230411131121233" style="zoom:50%;">
+
+<h2 id="DDL-数据库的操作"><a href="#DDL-数据库的操作" class="headerlink" title="DDL-数据库的操作"></a>DDL-数据库的操作</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411131831105.png" alt="image-20230411131831105" style="zoom:50%;">
+
+<ul>
+<li>括符表示可以省略</li>
+</ul>
+<h2 id="DDL-创建-amp-查询"><a href="#DDL-创建-amp-查询" class="headerlink" title="DDL-创建&amp;查询"></a>DDL-创建&amp;查询</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411132006031.png" alt="image-20230411132006031" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411161814042.png" alt="image-20230411161814042" style="zoom:50%;">
+
+<h2 id="DDL-表结构的数据类型讲解"><a href="#DDL-表结构的数据类型讲解" class="headerlink" title="DDL-表结构的数据类型讲解"></a>DDL-表结构的数据类型讲解</h2><h3 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411162245729.png" alt="image-20230411162245729" style="zoom:50%;">
+
+<h4 id="如果是无符号就在后面加一个unsigned："><a href="#如果是无符号就在后面加一个unsigned：" class="headerlink" title="如果是无符号就在后面加一个unsigned："></a>如果是无符号就在后面加一个<code>unsigned</code>：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age TINYINT UNSIGNED </span><br></pre></td></tr></table></figure>
+
+<p>在MySQL中，数值类型的声明不区分大小写。无论是使用小写还是大写声明数值类型，MySQL都可以正确地解析它们。例如，以下两个声明是等效的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy code<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (id <span class="type">INT</span>, <span class="keyword">value</span> <span class="type">DECIMAL</span>);</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (id <span class="type">int</span>, <span class="keyword">value</span> <span class="type">decimal</span>);</span><br></pre></td></tr></table></figure>
+
+<p>无论是使用大写还是小写，MySQL都会将”INT”解析为整数类型，将”DECIMAL”解析为十进制数类型。因此，在声明MySQL表中的列时，可以根据自己的喜好和约定来选择使用大写或小写。</p>
+<h4 id="单精度、双精度浮点数区分精度和标度"><a href="#单精度、双精度浮点数区分精度和标度" class="headerlink" title="单精度、双精度浮点数区分精度和标度"></a>单精度、双精度浮点数区分精度和标度</h4><p>对于 Float 和 Double 类型，它们的精度和标度可以在声明时进行指定。例如，声明一个 Double 类型的列，其精度为 10，标度为 2，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlCopy code</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (id <span class="type">INT</span>, <span class="keyword">value</span> <span class="keyword">DOUBLE</span>(<span class="number">10</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>这表示该列可以存储最多 10 位数字，其中包括小数点和小数位数，且小数部分最多有 2 位。</p>
+<p>需要注意的是，Float 和 Double 类型的实际精度和标度可能会因为计算机内部二进制储存的限制而有所偏差，因此在进行精确计算时需要特别注意。</p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163245444.png" alt="image-20230411163245444" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163803877.png" alt="image-20230411163803877" style="zoom:50%;">
+
+<h3 id="日期事件类型"><a href="#日期事件类型" class="headerlink" title="日期事件类型"></a>日期事件类型</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411163927906.png" alt="image-20230411163927906" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164000773.png" alt="image-20230411164000773" style="zoom:50%;">
+
+<blockquote>
+<p>打勾的用的多一些</p>
+</blockquote>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164114592.png" alt="image-20230411164114592" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164427849.png" alt="image-20230411164427849" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164445332.png" alt="image-20230411164445332" style="zoom:50%;">
+
+<h2 id="DDL-表的修改-修改和删除"><a href="#DDL-表的修改-修改和删除" class="headerlink" title="DDL-表的修改-修改和删除"></a>DDL-表的修改-修改和删除</h2><h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411164650609.png" alt="image-20230411164650609" style="zoom:50%;">
+
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165033261.png" alt="image-20230411165033261" style="zoom:50%;">
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165147026.png" alt="image-20230411165147026" style="zoom:50%;">
+
+<h3 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165227993.png" alt="image-20230411165227993" style="zoom:50%;">
+
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165339849.png" alt="image-20230411165339849" style="zoom:50%;">
+
+<blockquote>
+<p>表中的数据全部会被删除掉</p>
+</blockquote>
+<h2 id="总结DDL"><a href="#总结DDL" class="headerlink" title="总结DDL"></a>总结DDL</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165539850.png" alt="image-20230411165539850" style="zoom:50%;">
+
+<h2 id="图形化界面工具-DataGrip"><a href="#图形化界面工具-DataGrip" class="headerlink" title="图形化界面工具-DataGrip"></a>图形化界面工具-DataGrip</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411165742981.png" alt="image-20230411165742981" style="zoom:50%;">
+
+<h2 id="DML-插入"><a href="#DML-插入" class="headerlink" title="DML-插入"></a>DML-插入</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174325085.png" alt="image-20230411174325085" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174419088.png" alt="image-20230411174419088" style="zoom:50%;">
+
+
+
+<h3 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174644911.png" alt="image-20230411174644911" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174703974.png" alt="image-20230411174703974" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174717151.png" alt="image-20230411174717151" style="zoom:50%;">
+
+<h3 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174802276.png" alt="image-20230411174802276" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174816137.png" alt="image-20230411174816137" style="zoom:50%;">
+
+
+
+<h3 id="第三种方法"><a href="#第三种方法" class="headerlink" title="第三种方法"></a>第三种方法</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411174848223.png" alt="image-20230411174848223" style="zoom:50%;">
+
+<h2 id="DML-更新和删除"><a href="#DML-更新和删除" class="headerlink" title="DML-更新和删除"></a>DML-更新和删除</h2><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175320074.png" alt="image-20230411175320074" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175507263.png" alt="image-20230411175507263" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175519492.png" alt="image-20230411175519492" style="zoom:50%;">
+
+<h3 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h3><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175642285.png" alt="image-20230411175642285" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175629863.png" alt="image-20230411175629863" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175958559.png" alt="image-20230411175958559" style="zoom:50%;">
+
+<img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411175930212.png" alt="image-20230411175930212" style="zoom:50%;">
+
+<h2 id="DML-小结"><a href="#DML-小结" class="headerlink" title="DML-小结"></a>DML-小结</h2><img src="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/image-20230411180053835.png" alt="image-20230411180053835" style="zoom:50%;">
+
+<h2 id="DQL-基础查询"><a href="#DQL-基础查询" class="headerlink" title="DQL-基础查询"></a>DQL-基础查询</h2>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="DragonGong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="DragonGong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/Mysql/" rel="tag"><i class="fa fa-tag"></i> Mysql</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/10/%E4%BA%94%E5%AD%90%E6%A3%8B%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/" rel="prev" title="五子棋的简单实现">
+      <i class="fa fa-chevron-left"></i> 五子棋的简单实现
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">MySQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">MySQL课程介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">MySQL数据库的相关概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.</span> <span class="nav-text">MySQL安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.4.</span> <span class="nav-text">MySQL的启动和连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.</span> <span class="nav-text">MySQL数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.5.1.</span> <span class="nav-text">关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL"><span class="nav-number">2.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95%E5%92%8C%E5%88%86%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">SQL通用语法和分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">DDL-数据库的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL-%E5%88%9B%E5%BB%BA-amp-%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.3.</span> <span class="nav-text">DDL-创建&amp;查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL-%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AE%B2%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">DDL-表结构的数据类型讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.1.</span> <span class="nav-text">数值类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%98%AF%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%B0%B1%E5%9C%A8%E5%90%8E%E9%9D%A2%E5%8A%A0%E4%B8%80%E4%B8%AAunsigned%EF%BC%9A"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">如果是无符号就在后面加一个unsigned：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%B2%BE%E5%BA%A6%E3%80%81%E5%8F%8C%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0%E5%8C%BA%E5%88%86%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%A0%87%E5%BA%A6"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">单精度、双精度浮点数区分精度和标度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.2.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.3.</span> <span class="nav-text">日期事件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.4.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDL-%E8%A1%A8%E7%9A%84%E4%BF%AE%E6%94%B9-%E4%BF%AE%E6%94%B9%E5%92%8C%E5%88%A0%E9%99%A4"><span class="nav-number">2.5.</span> <span class="nav-text">DDL-表的修改-修改和删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0"><span class="nav-number">2.5.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">2.5.2.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4"><span class="nav-number">2.5.3.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%90%8D"><span class="nav-number">2.5.4.</span> <span class="nav-text">修改表名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="nav-number">2.5.5.</span> <span class="nav-text">删除表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93DDL"><span class="nav-number">2.6.</span> <span class="nav-text">总结DDL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E5%B7%A5%E5%85%B7-DataGrip"><span class="nav-number">2.7.</span> <span class="nav-text">图形化界面工具-DataGrip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML-%E6%8F%92%E5%85%A5"><span class="nav-number">2.8.</span> <span class="nav-text">DML-插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.8.1.</span> <span class="nav-text">第一种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.8.2.</span> <span class="nav-text">第二种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.8.3.</span> <span class="nav-text">第三种方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML-%E6%9B%B4%E6%96%B0%E5%92%8C%E5%88%A0%E9%99%A4"><span class="nav-number">2.9.</span> <span class="nav-text">DML-更新和删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">2.9.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-1"><span class="nav-number">2.9.2.</span> <span class="nav-text">删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DML-%E5%B0%8F%E7%BB%93"><span class="nav-number">2.10.</span> <span class="nav-text">DML-小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQL-%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.11.</span> <span class="nav-text">DQL-基础查询</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="DragonGong"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">DragonGong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CloudDragonGong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CloudDragonGong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dragongong20040318@gmail.com" title="E-Mail → mailto:dragongong20040318@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/DragonGong0318" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;DragonGong0318" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/20801014/%e9%be%9a%e4%ba%91%e9%be%99" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;20801014&#x2F;%e9%be%9a%e4%ba%91%e9%be%99" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DragonGong</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">65k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">59 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+<br /> #换行
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/21/2019 15:54:40");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

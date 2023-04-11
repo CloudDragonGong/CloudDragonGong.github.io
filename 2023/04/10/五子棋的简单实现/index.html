@@ -30,7 +30,7 @@
 <meta property="og:description" content="一个小项目">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-10T07:26:29.000Z">
-<meta property="article:modified_time" content="2023-04-10T07:59:09.086Z">
+<meta property="article:modified_time" content="2023-04-10T08:40:06.915Z">
 <meta property="article:author" content="DragonGong">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="Swing">
@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-10 15:26:29 / 修改时间：15:59:09" itemprop="dateCreated datePublished" datetime="2023-04-10T15:26:29+08:00">2023-04-10</time>
+              <time title="创建时间：2023-04-10 15:26:29 / 修改时间：16:40:06" itemprop="dateCreated datePublished" datetime="2023-04-10T15:26:29+08:00">2023-04-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,14 +219,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
+              <span>4.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -265,6 +265,29 @@
 
 <p>在这个例子中，我们创建了一个名为MyButton的JFrame，并向其添加了一个按钮。使用<code>setBackground</code>方法将按钮的背景色设置为蓝色。最后，我们设置了窗口的大小、关闭操作和可见性。</p>
 <p>总的来说，java.awt.Color类表示颜色，提供了多种方法来获取和设置颜色的不同属性。Color类还提供了一些静态常量来表示一些常用的颜色。Color类可以用于设置图形界面中各种组件的前景色、背景色、边框色等等。</p>
+<h2 id="MouseListener-接口"><a href="#MouseListener-接口" class="headerlink" title="MouseListener 接口"></a>MouseListener 接口</h2><p>MouseListener 接口是 Java AWT&#x2F;Swing 框架中的一个接口，用于处理鼠标事件。该接口中包含以下 5 个方法，可以在实现接口的类中进行重写：</p>
+<ol>
+<li><code>void mouseClicked(MouseEvent e)</code>：在用户单击鼠标按钮时调用。该方法会接收一个 <code>MouseEvent</code> 参数，该参数包含了有关鼠标事件的详细信息。</li>
+<li><code>void mousePressed(MouseEvent e)</code>：在用户按下鼠标按钮时调用。该方法会接收一个 <code>MouseEvent</code> 参数，该参数包含了有关鼠标事件的详细信息。</li>
+<li><code>void mouseReleased(MouseEvent e)</code>：在用户释放鼠标按钮时调用。该方法会接收一个 <code>MouseEvent</code> 参数，该参数包含了有关鼠标事件的详细信息。</li>
+<li><code>void mouseEntered(MouseEvent e)</code>：当鼠标进入组件的范围时调用。该方法会接收一个 <code>MouseEvent</code> 参数，该参数包含了有关鼠标事件的详细信息。</li>
+<li><code>void mouseExited(MouseEvent e)</code>：当鼠标离开组件的范围时调用。该方法会接收一个 <code>MouseEvent</code> 参数，该参数包含了有关鼠标事件的详细信息。</li>
+</ol>
+<p>需要注意的是，重写这些方法时，可以根据实际需求选择是否使用方法中的 <code>MouseEvent</code> 参数。例如，如果只需要在鼠标单击时执行某些操作，则可以只重写 <code>mouseClicked</code> 方法，并忽略其他方法。</p>
+<h2 id="如何使用-getPreferredSize-方法"><a href="#如何使用-getPreferredSize-方法" class="headerlink" title="如何使用 getPreferredSize() 方法"></a>如何使用 <code>getPreferredSize()</code> 方法</h2><p>当我们编写 Java Swing 程序时，布局和组件的大小常常是我们需要关注的问题之一。而在实现自定义的 Swing 组件时，我们可能需要重写 <code>getPreferredSize()</code> 方法来指定组件的首选大小，以便在容器中正确地进行布局和显示。</p>
+<ol>
+<li>了解 <code>getPreferredSize()</code> 方法的作用</li>
+</ol>
+<p><code>getPreferredSize()</code> 方法是 Java Swing 中的一个重要方法，用于指定组件的首选大小。在容器中添加组件时，容器会使用该方法返回的尺寸来决定组件的大小和位置，以便保证组件在容器中的合适位置显示。</p>
+<p>2.重写 <code>getPreferredSize()</code> 方法</p>
+<p>如果我们需要实现自定义的 Swing 组件，并指定该组件的大小，可以重写 <code>getPreferredSize()</code> 方法，并在该方法中返回一个 <code>Dimension</code> 对象，该对象表示组件的首选大小。通常，我们可以根据组件内部的布局和内容计算出组件的首选大小，并将其返回。</p>
+<p>例如，当我们实现一个自定义的 <code>JPanel</code> 组件时，可以重写 <code>getPreferredSize()</code> 方法，并根据组件中包含的子组件的大小和位置来计算组件的首选大小。以下是一个简单的示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javaCopy codepublic <span class="keyword">class</span> <span class="title class_">MyPanel</span> <span class="keyword">extends</span> <span class="title class_">JPanel</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Dimension <span class="title function_">getPreferredSize</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 计算组件的首选大小</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> <span class="number">200</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Dimension</span>(width, height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>getPreferredSize()</code> 方法返回一个宽度为 100、高度为 200 的 <code>Dimension</code> 对象，表示该组件的首选大小为 100x200。</p>
+<p>3.使用首选大小</p>
+<p>当我们重写 <code>getPreferredSize()</code> 方法后，可以使用 <code>setPreferredSize()</code> 方法将组件的首选大小设置为指定的大小。例如，当我们创建一个新的 <code>MyPanel</code> 对象时，可以调用 <code>setPreferredSize()</code> 方法，将组件的首选大小设置为 100x200，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javaCopy <span class="type">codeMyPanel</span> <span class="variable">myPanel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyPanel</span>();</span><br><span class="line">myPanel.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">100</span>, <span class="number">200</span>));</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -309,7 +332,10 @@
     <a href="/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/" rel="prev" title="Swing细节笔记">
       <i class="fa fa-chevron-left"></i> Swing细节笔记
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/10/Mysql%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6/" rel="next" title="Mysql入门到进阶">
+      Mysql入门到进阶 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -368,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">代码的一些细节介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getContentPane-%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">getContentPane()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-awt-Image%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">java.awt.Image抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-awt-Color%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">java.awt.Color类</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">代码的一些细节介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getContentPane-%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">getContentPane()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-awt-Image%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">java.awt.Image抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-awt-Color%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">java.awt.Color类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MouseListener-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.4.</span> <span class="nav-text">MouseListener 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-getPreferredSize-%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">如何使用 getPreferredSize() 方法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -384,20 +410,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -448,13 +474,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">62k</span>
+    <span title="站点总字数">65k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">59 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
