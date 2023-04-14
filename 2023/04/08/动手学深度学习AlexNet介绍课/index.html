@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/5.png">
 <meta property="og:image" content="http://example.com/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/3.png">
 <meta property="article:published_time" content="2023-04-07T17:15:04.000Z">
-<meta property="article:modified_time" content="2023-04-08T06:05:03.578Z">
+<meta property="article:modified_time" content="2023-04-14T08:33:48.455Z">
 <meta property="article:author" content="DragonGong">
 <meta property="article:tag" content="AlexNet">
 <meta property="article:tag" content="深度学习">
@@ -190,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-04-08 01:15:04 / 修改时间：14:05:03" itemprop="dateCreated datePublished" datetime="2023-04-08T01:15:04+08:00">2023-04-08</time>
+              <time title="创建时间：2023-04-08 01:15:04" itemprop="dateCreated datePublished" datetime="2023-04-08T01:15:04+08:00">2023-04-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-14 16:33:48" itemprop="dateModified" datetime="2023-04-14T16:33:48+08:00">2023-04-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -221,14 +227,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+              <span>5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -251,8 +257,9 @@
 
 <img src="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/2.png" alt="精简图" style="zoom:50%;">
 
-
-
+<blockquote>
+<p>这个是精简版的架构，下面的代码的输出不是1000个种类，是10个</p>
+</blockquote>
 <h2 id="conv1阶段"><a href="#conv1阶段" class="headerlink" title="conv1阶段"></a>conv1阶段</h2><blockquote>
 <p>输入数据：227×227×3</p>
 </blockquote>
@@ -318,7 +325,7 @@
 <p>AlexNet在fc6全连接层引入了drop out的功能。dropout是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率（一般是50%，这种情况下随机生成的网络结构最多）将其暂时从网络中丢弃（保留其权值），不再对前向和反向传输的数据响应。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而相当于每一个mini-batch都在训练不同的网络，drop out可以有效防止模型过拟合，让网络泛化能力更强，同时由于减少了网络复杂度，加快了运算速度。还有一种观点认为drop out有效的原因是对样本增加来噪声，变相增加了训练样本。</p>
 </blockquote>
 <h2 id="fc7阶段"><a href="#fc7阶段" class="headerlink" title="fc7阶段"></a>fc7阶段</h2><blockquote>
-<p>输入数据：4096×1</p>
+<p>xxxxxxxxxx javaCopy codeMyPanel myPanel &#x3D; new MyPanel();myPanel.setPreferredSize(new Dimension(100, 200));java</p>
 </blockquote>
 <blockquote>
 <p>全连接输出：4096×1<br>relu7后的数据：4096×1<br>drop out7后数据：4096×1<br>最后的输出：4096×1</p>
@@ -358,7 +365,7 @@
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>AlexNet 是更大更深的 LeNet，10x 参数个数，260x 计算复杂度</li>
-<li>新进入了丢弃法，ReLU，最大池化层，和数据增强</li>
+<li>新进入了丢弃法(dropout)，ReLU，最大池化层，和数据增强</li>
 <li>AlexNet 赢下了 2012mageNet 竞赛后，标志着新的一轮神经网络热潮的开始</li>
 </ul>
 
@@ -400,8 +407,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/04/08/AlexNet%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="AlexNet动手学深度学习论文精读笔记">
-      <i class="fa fa-chevron-left"></i> AlexNet动手学深度学习论文精读笔记
+    <a href="/2023/04/04/java%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" rel="prev" title="java语法学习">
+      <i class="fa fa-chevron-left"></i> java语法学习
     </a></div>
       <div class="post-nav-item">
     <a href="/2023/04/09/Swing%E7%BB%86%E8%8A%82%E7%AC%94%E8%AE%B0/" rel="next" title="Swing细节笔记">
@@ -481,7 +488,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -494,7 +501,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
