@@ -27,11 +27,19 @@
 <meta property="og:site_name" content="云龙博客">
 <meta property="og:description" content="本片博客对应着吴恩达教学视频的构建机器学习策略的章节">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215853478.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215822227.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222129301.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222142677.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222238013.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418224641657.png">
+<meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418225254494.png">
 <meta property="article:published_time" content="2023-04-18T13:49:37.000Z">
-<meta property="article:modified_time" content="2023-04-18T13:52:56.199Z">
+<meta property="article:modified_time" content="2023-04-18T15:44:39.219Z">
 <meta property="article:author" content="DragonGong">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215853478.png">
 
 <link rel="canonical" href="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/">
 
@@ -185,7 +193,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-18 21:49:37 / 修改时间：21:52:56" itemprop="dateCreated datePublished" datetime="2023-04-18T21:49:37+08:00">2023-04-18</time>
+              <time title="创建时间：2023-04-18 21:49:37 / 修改时间：23:44:39" itemprop="dateCreated datePublished" datetime="2023-04-18T21:49:37+08:00">2023-04-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,7 +222,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>26</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -238,7 +246,84 @@
 </blockquote>
 <span id="more"></span>
 
+<h1 id="机器学习策略（上）"><a href="#机器学习策略（上）" class="headerlink" title="机器学习策略（上）"></a>机器学习策略（上）</h1><h3 id="1-Why-ML-Strategy"><a href="#1-Why-ML-Strategy" class="headerlink" title="1. Why ML Strategy"></a><strong>1. Why ML Strategy</strong></h3><p>当我们最初得到一个深度神经网络模型时，我们可能希望从很多方面来对它进行优化，例如：</p>
+<ul>
+<li><p>Collect more data</p>
+</li>
+<li><p>Collect more diverse training set</p>
+</li>
+<li><p>Train algorithm longer with gradient descent</p>
+</li>
+<li><p>Try Adam instead of gradient descent</p>
+</li>
+<li><p>Try bigger network</p>
+</li>
+<li><p>Try smaller network</p>
+</li>
+<li><p>Try dropout</p>
+</li>
+<li><p>Add L2 regularization</p>
+</li>
+<li><p>Network architecture: Activation functions, #hidden units…</p>
+</li>
+</ul>
+<p>可选择的方法很多，也很复杂、繁琐。盲目选择、尝试不仅耗费时间而且可能收效甚微。因此，使用快速、有效的策略来优化机器学习模型是非常必要的。</p>
+<h3 id="2-Orthogonalization"><a href="#2-Orthogonalization" class="headerlink" title="2. Orthogonalization"></a><strong>2. Orthogonalization</strong></h3><img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215853478.png" alt="image-20230418215853478" style="zoom:50%;">
 
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215822227.png" alt="image-20230418215822227" style="zoom:67%;">
+
+<p>正交化</p>
+<blockquote>
+<p>如果想要调整某个参数来优化这个模型</p>
+<p>控制变量才是最好最容易控制的</p>
+<p>改变某个参数能够只是改变这个模型的特定的功能能力才是最好的</p>
+<p>也就是一种参数对应一种能力</p>
+<p>而不是一个参数多个能力发生改变</p>
+</blockquote>
+<ul>
+<li><strong>Fit training set well on cost function</strong></li>
+<li><strong>Fit dev set well on cost function</strong></li>
+<li><strong>Fit test set well on cost function</strong></li>
+<li><strong>Performs well in real world</strong></li>
+</ul>
+<p>这些是常见的需要调参的地方</p>
+<h3 id="3-Single-number-evaluation-metric"><a href="#3-Single-number-evaluation-metric" class="headerlink" title="3. Single number evaluation metric"></a><strong>3. Single number evaluation metric</strong></h3><p>同一个功能的若干个不同的模型，可能有多个方面的优劣</p>
+<p>想要选一个好的，就需要一个评价指标来对比</p>
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222129301.png" alt="image-20230418222129301">
+
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222142677.png" alt="image-20230418222142677" style="zoom:50%;">
+
+<p>$F1$的出现就可以方便评估模型的优劣</p>
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222238013.png" alt="image-20230418222238013" style="zoom:80%;">
+
+<p>这只是一种算法，算法是可以变得，所以不用管它怎么来的</p>
+<p>比如这个平均的算法</p>
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418224641657.png" alt="image-20230418224641657" style="zoom:80%;">
+
+<h3 id="4-Satisficing-and-Optimizing-metic"><a href="#4-Satisficing-and-Optimizing-metic" class="headerlink" title="4. Satisficing and Optimizing metic"></a><strong>4. Satisficing and Optimizing metic</strong></h3><p>有时把所有的指标全部用一个算法满足是很难的</p>
+<p>方便起见就有了满意指标和优化指标</p>
+<ul>
+<li>满意指标：只要达到了阈值就行</li>
+<li>优化指标：要尽可能的越优秀越好</li>
+</ul>
+<img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418225254494.png" alt="image-20230418225254494" style="zoom:80%;">
+
+<p>假设100ms以内用户不会在意这个分类器的快慢了</p>
+<p>所以阈值达到就好了</p>
+<p>accuracy越优秀越好，</p>
+<p>所以选择B</p>
+<h3 id="5-Train-x2F-dev-x2F-test-distributions"><a href="#5-Train-x2F-dev-x2F-test-distributions" class="headerlink" title="5. Train&#x2F;dev&#x2F;test distributions"></a><strong>5. Train&#x2F;dev&#x2F;test distributions</strong></h3><p>验证集和测试集应该在同一分布才能有更好的效果</p>
+<h3 id="6-Size-of-the-dev-and-test-sets"><a href="#6-Size-of-the-dev-and-test-sets" class="headerlink" title="6. Size of the dev and test sets"></a><strong>6. Size of the dev and test sets</strong></h3><p>在之前的课程中我们已经介绍过，当样本数量不多（小于一万）的时候，通常将Train&#x2F;dev&#x2F;test sets的比例设为60%&#x2F;20%&#x2F;20%，在没有dev sets的情况下，Train&#x2F;test sets的比例设为70%&#x2F;30%。当样本数量很大（百万级别）的时候，通常将相应的比例设为98%&#x2F;1%&#x2F;1%或者99%&#x2F;1%。</p>
+<ul>
+<li><p>对于dev sets数量的设置，应该遵循的准则是通过dev sets能够检测不同算法或模型的区别，以便选择出更好的模型。</p>
+</li>
+<li><p>对于test sets数量的设置，应该遵循的准则是通过test sets能够反映出模型在实际中的表现。</p>
+</li>
+</ul>
+<blockquote>
+<p>实际应用中，可能只有train&#x2F;dev sets，而没有test sets。这种情况也是允许的，只要算法模型没有对dev sets过拟合。但是，条件允许的话，最好是有test sets，实现无偏估计</p>
+</blockquote>
+<h3 id="7-When-to-change-dev-x2F-test-sets-and-metrics"><a href="#7-When-to-change-dev-x2F-test-sets-and-metrics" class="headerlink" title="7. When to change dev&#x2F;test sets and metrics"></a><strong>7. When to change dev&#x2F;test sets and metrics</strong></h3>
     </div>
 
     
@@ -338,6 +423,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">机器学习策略（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Why-ML-Strategy"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Why ML Strategy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Orthogonalization"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. Orthogonalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Single-number-evaluation-metric"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. Single number evaluation metric</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Satisficing-and-Optimizing-metic"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. Satisficing and Optimizing metic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Train-x2F-dev-x2F-test-distributions"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. Train&#x2F;dev&#x2F;test distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Size-of-the-dev-and-test-sets"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. Size of the dev and test sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-When-to-change-dev-x2F-test-sets-and-metrics"><span class="nav-number">1.0.7.</span> <span class="nav-text">7. When to change dev&#x2F;test sets and metrics</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -417,13 +503,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">81k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:12</span>
+    <span title="站点阅读时长">1:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
