@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421175146721.png">
 <meta property="og:image" content="http://example.com/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421175619556.png">
 <meta property="article:published_time" content="2023-04-18T13:49:37.000Z">
-<meta property="article:modified_time" content="2023-04-21T10:01:56.946Z">
+<meta property="article:modified_time" content="2023-04-22T03:04:02.779Z">
 <meta property="article:author" content="DragonGong">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-21 18:01:56" itemprop="dateModified" datetime="2023-04-21T18:01:56+08:00">2023-04-21</time>
+                <time title="修改时间：2023-04-22 11:04:02" itemprop="dateModified" datetime="2023-04-22T11:04:02+08:00">2023-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="机器学习策略（上）"><a href="#机器学习策略（上）" class="headerlink" title="机器学习策略（上）"></a>机器学习策略（上）</h1><h3 id="1-Why-ML-Strategy"><a href="#1-Why-ML-Strategy" class="headerlink" title="1. Why ML Strategy"></a><strong>1. Why ML Strategy</strong></h3><p>当我们最初得到一个深度神经网络模型时，我们可能希望从很多方面来对它进行优化，例如：</p>
+<h1 id="机器学习策略（上）"><a href="#机器学习策略（上）" class="headerlink" title="机器学习策略（上）"></a>机器学习策略（上）</h1><h2 id="1-Why-ML-Strategy"><a href="#1-Why-ML-Strategy" class="headerlink" title="1. Why ML Strategy"></a><strong>1. Why ML Strategy</strong></h2><p>当我们最初得到一个深度神经网络模型时，我们可能希望从很多方面来对它进行优化，例如：</p>
 <ul>
 <li><p>Collect more data</p>
 </li>
@@ -281,7 +281,7 @@
 </li>
 </ul>
 <p>可选择的方法很多，也很复杂、繁琐。盲目选择、尝试不仅耗费时间而且可能收效甚微。因此，使用快速、有效的策略来优化机器学习模型是非常必要的。</p>
-<h3 id="2-Orthogonalization"><a href="#2-Orthogonalization" class="headerlink" title="2. Orthogonalization"></a><strong>2. Orthogonalization</strong></h3><img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215853478.png" alt="image-20230418215853478" style="zoom:50%;">
+<h2 id="2-Orthogonalization"><a href="#2-Orthogonalization" class="headerlink" title="2. Orthogonalization"></a><strong>2. Orthogonalization</strong></h2><img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215853478.png" alt="image-20230418215853478" style="zoom:50%;">
 
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418215822227.png" alt="image-20230418215822227" style="zoom:67%;">
 
@@ -300,7 +300,7 @@
 <li><strong>Performs well in real world</strong></li>
 </ul>
 <p>这些是常见的需要调参的地方</p>
-<h3 id="3-Single-number-evaluation-metric"><a href="#3-Single-number-evaluation-metric" class="headerlink" title="3. Single number evaluation metric"></a><strong>3. Single number evaluation metric</strong></h3><p>同一个功能的若干个不同的模型，可能有多个方面的优劣</p>
+<h2 id="3-Single-number-evaluation-metric"><a href="#3-Single-number-evaluation-metric" class="headerlink" title="3. Single number evaluation metric"></a><strong>3. Single number evaluation metric</strong></h2><p>同一个功能的若干个不同的模型，可能有多个方面的优劣</p>
 <p>想要选一个好的，就需要一个评价指标来对比</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418222129301.png" alt="image-20230418222129301">
 
@@ -313,7 +313,7 @@
 <p>比如这个平均的算法</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230418224641657.png" alt="image-20230418224641657" style="zoom:80%;">
 
-<h3 id="4-Satisficing-and-Optimizing-metic"><a href="#4-Satisficing-and-Optimizing-metic" class="headerlink" title="4. Satisficing and Optimizing metic"></a><strong>4. Satisficing and Optimizing metic</strong></h3><p>有时把所有的指标全部用一个算法满足是很难的</p>
+<h2 id="4-Satisficing-and-Optimizing-metic"><a href="#4-Satisficing-and-Optimizing-metic" class="headerlink" title="4. Satisficing and Optimizing metic"></a><strong>4. Satisficing and Optimizing metic</strong></h2><p>有时把所有的指标全部用一个算法满足是很难的</p>
 <p>方便起见就有了满意指标和优化指标</p>
 <ul>
 <li>满意指标：只要达到了阈值就行</li>
@@ -325,8 +325,8 @@
 <p>所以阈值达到就好了</p>
 <p>accuracy越优秀越好，</p>
 <p>所以选择B</p>
-<h3 id="5-Train-x2F-dev-x2F-test-distributions"><a href="#5-Train-x2F-dev-x2F-test-distributions" class="headerlink" title="5. Train&#x2F;dev&#x2F;test distributions"></a><strong>5. Train&#x2F;dev&#x2F;test distributions</strong></h3><p>验证集和测试集应该在同一分布才能有更好的效果</p>
-<h3 id="6-Size-of-the-dev-and-test-sets"><a href="#6-Size-of-the-dev-and-test-sets" class="headerlink" title="6. Size of the dev and test sets"></a><strong>6. Size of the dev and test sets</strong></h3><p>在之前的课程中我们已经介绍过，当样本数量不多（小于一万）的时候，通常将Train&#x2F;dev&#x2F;test sets的比例设为60%&#x2F;20%&#x2F;20%，在没有dev sets的情况下，Train&#x2F;test sets的比例设为70%&#x2F;30%。当样本数量很大（百万级别）的时候，通常将相应的比例设为98%&#x2F;1%&#x2F;1%或者99%&#x2F;1%。</p>
+<h2 id="5-Train-x2F-dev-x2F-test-distributions"><a href="#5-Train-x2F-dev-x2F-test-distributions" class="headerlink" title="5. Train&#x2F;dev&#x2F;test distributions"></a><strong>5. Train&#x2F;dev&#x2F;test distributions</strong></h2><p>验证集和测试集应该在同一分布才能有更好的效果</p>
+<h2 id="6-Size-of-the-dev-and-test-sets"><a href="#6-Size-of-the-dev-and-test-sets" class="headerlink" title="6. Size of the dev and test sets"></a><strong>6. Size of the dev and test sets</strong></h2><p>在之前的课程中我们已经介绍过，当样本数量不多（小于一万）的时候，通常将Train&#x2F;dev&#x2F;test sets的比例设为60%&#x2F;20%&#x2F;20%，在没有dev sets的情况下，Train&#x2F;test sets的比例设为70%&#x2F;30%。当样本数量很大（百万级别）的时候，通常将相应的比例设为98%&#x2F;1%&#x2F;1%或者99%&#x2F;1%。</p>
 <ul>
 <li><p>对于dev sets数量的设置，应该遵循的准则是通过dev sets能够检测不同算法或模型的区别，以便选择出更好的模型。</p>
 </li>
@@ -336,7 +336,7 @@
 <blockquote>
 <p>实际应用中，可能只有train&#x2F;dev sets，而没有test sets。这种情况也是允许的，只要算法模型没有对dev sets过拟合。但是，条件允许的话，最好是有test sets，实现无偏估计</p>
 </blockquote>
-<h3 id="7-When-to-change-dev-x2F-test-sets-and-metrics"><a href="#7-When-to-change-dev-x2F-test-sets-and-metrics" class="headerlink" title="7. When to change dev&#x2F;test sets and metrics"></a><strong>7. When to change dev&#x2F;test sets and metrics</strong></h3><p>由于有些模型给出的结果有时候根本不能用，比如色情图片，这是绝对不能发生在一个分类器上的。</p>
+<h2 id="7-When-to-change-dev-x2F-test-sets-and-metrics"><a href="#7-When-to-change-dev-x2F-test-sets-and-metrics" class="headerlink" title="7. When to change dev&#x2F;test sets and metrics"></a><strong>7. When to change dev&#x2F;test sets and metrics</strong></h2><p>由于有些模型给出的结果有时候根本不能用，比如色情图片，这是绝对不能发生在一个分类器上的。</p>
 <p>所以就想到一个惩罚机制能够降低色情图片的产生</p>
 <p>原来的cost function</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230420222801754.png" alt="image-20230420222801754" style="zoom:50%;">
@@ -350,13 +350,13 @@
 <li>要怎么分</li>
 <li>要得到一个什么样的结果，不要什么样的结果</li>
 </ul>
-<h3 id="9-Avoidable-bias"><a href="#9-Avoidable-bias" class="headerlink" title="9. Avoidable bias"></a><strong>9. Avoidable bias</strong></h3><p>过拟合和欠拟合的评价指标</p>
+<h2 id="9-Avoidable-bias"><a href="#9-Avoidable-bias" class="headerlink" title="9. Avoidable bias"></a><strong>9. Avoidable bias</strong></h2><p>过拟合和欠拟合的评价指标</p>
 <ul>
 <li>bias:人的错误率和test的错误率的差值</li>
 <li>variance:train的错误率和test的错误率的差值</li>
 </ul>
 <p>比较这两个指标可以判断是过拟合还是欠拟合</p>
-<h1 id="机器学习策略（下）"><a href="#机器学习策略（下）" class="headerlink" title="机器学习策略（下）"></a>机器学习策略（下）</h1><h3 id="1-Carrying-out-error-analysis"><a href="#1-Carrying-out-error-analysis" class="headerlink" title="1. Carrying out error analysis"></a><strong>1. Carrying out error analysis</strong></h3><p>我们要对提高正确率的因素进行分析</p>
+<h1 id="机器学习策略（下）"><a href="#机器学习策略（下）" class="headerlink" title="机器学习策略（下）"></a>机器学习策略（下）</h1><h2 id="1-Carrying-out-error-analysis"><a href="#1-Carrying-out-error-analysis" class="headerlink" title="1. Carrying out error analysis"></a><strong>1. Carrying out error analysis</strong></h2><p>我们要对提高正确率的因素进行分析</p>
 <p>怎么样能提高正确率，减小错误率才是最重要的</p>
 <p>少做无用功</p>
 <ul>
@@ -364,15 +364,15 @@
 <li><strong>Fix great cats(lions, panthers, etc…) being misrecognized</strong></li>
 <li><strong>Improve performance on blurry images</strong></li>
 </ul>
-<h3 id="2-Cleaning-up-incorrectly-labeled-data"><a href="#2-Cleaning-up-incorrectly-labeled-data" class="headerlink" title="2. Cleaning up incorrectly labeled data"></a><strong>2. Cleaning up incorrectly labeled data</strong></h3><p>要不要进行这个操作和上面一样，取决于这个因素到底是不是主要因素</p>
+<h2 id="2-Cleaning-up-incorrectly-labeled-data"><a href="#2-Cleaning-up-incorrectly-labeled-data" class="headerlink" title="2. Cleaning up incorrectly labeled data"></a><strong>2. Cleaning up incorrectly labeled data</strong></h2><p>要不要进行这个操作和上面一样，取决于这个因素到底是不是主要因素</p>
 <p>如果不是主要因素，就让他</p>
 <p>如果是主要因素，就改</p>
-<h3 id="3-Build-your-first-system-quickly-then"><a href="#3-Build-your-first-system-quickly-then" class="headerlink" title="**3. Build your first system quickly then **"></a>**3. Build your first system quickly then **</h3><ul>
+<h2 id="3-Build-your-first-system-quickly-then"><a href="#3-Build-your-first-system-quickly-then" class="headerlink" title="3. Build your first system quickly then"></a><strong>3. Build your first system quickly then</strong></h2><ul>
 <li><strong>Set up dev&#x2F;test set and metric</strong></li>
 <li><strong>Build initial system quickly</strong></li>
 <li><strong>Use Bias&#x2F;Variance analysis &amp; Error analysis to prioritize next steps</strong></li>
 </ul>
-<h3 id="4-Training-and-testing-on-different-distribution"><a href="#4-Training-and-testing-on-different-distribution" class="headerlink" title="4. Training and testing on different distribution"></a><strong>4. Training and testing on different distribution</strong></h3><p>如果训练集和测试集的区别很大（也就是不同的分布）怎么办</p>
+<h2 id="4-Training-and-testing-on-different-distribution"><a href="#4-Training-and-testing-on-different-distribution" class="headerlink" title="4. Training and testing on different distribution"></a><strong>4. Training and testing on different distribution</strong></h2><p>如果训练集和测试集的区别很大（也就是不同的分布）怎么办</p>
 <p>有两种方法</p>
 <ul>
 <li><p>将两个分布的的数据集完全混合，然后随机抽取一部分数据集当作训练集，一部分测试集（不是很好）</p>
@@ -380,24 +380,24 @@
 <li><p>将一部分测试集的数据加入到训练集之中，然后剩下的那一部分用来测试（挺好的）</p>
 </li>
 </ul>
-<h3 id="5-Bias-and-Variance-with-mismatched-data-distributions"><a href="#5-Bias-and-Variance-with-mismatched-data-distributions" class="headerlink" title="5. Bias and Variance with mismatched data distributions"></a>5. Bias and Variance with mismatched data distributions</h3><p>另一种数据集train-dev，是和train同一个部的数据集，只不过train-dev部分用来进行测试而已</p>
+<h2 id="5-Bias-and-Variance-with-mismatched-data-distributions"><a href="#5-Bias-and-Variance-with-mismatched-data-distributions" class="headerlink" title="5. Bias and Variance with mismatched data distributions"></a>5. Bias and Variance with mismatched data distributions</h2><p>另一种数据集train-dev，是和train同一个部的数据集，只不过train-dev部分用来进行测试而已</p>
 <p>这个数据集所体现的是和train的比较，如果差距很大那就欠拟合</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421171005423.png" alt="image-20230421171005423" style="zoom:50%;">
 
-<h3 id="6-Addressing-data-mismatch"><a href="#6-Addressing-data-mismatch" class="headerlink" title="6. Addressing data mismatch"></a><strong>6. Addressing data mismatch</strong></h3><p>有两个建议</p>
+<h2 id="6-Addressing-data-mismatch"><a href="#6-Addressing-data-mismatch" class="headerlink" title="6. Addressing data mismatch"></a><strong>6. Addressing data mismatch</strong></h2><p>有两个建议</p>
 <ul>
 <li>手动来解决训练集和测试集的样本的不同</li>
 <li>将测试集分布的样本放到训练集里面进行训练</li>
 </ul>
 <p>对于第二个点不能放太多，因为放太多了会影响训练的效果，增加训练的难度，导致噪声的过拟合从而没有噪声的反而识别不出来了。</p>
-<h3 id="7-Transfer-learning"><a href="#7-Transfer-learning" class="headerlink" title="7. Transfer learning"></a><strong>7. Transfer learning</strong></h3><p>迁移学习本质就是将原来的神经网络拆分成不同的功能部分，比如卷积神经网络，前面是提取特征，后面才是分类，所以可以迁移前面的与训练模型，然后用于不同的分类任务。</p>
+<h2 id="7-Transfer-learning"><a href="#7-Transfer-learning" class="headerlink" title="7. Transfer learning"></a><strong>7. Transfer learning</strong></h2><p>迁移学习本质就是将原来的神经网络拆分成不同的功能部分，比如卷积神经网络，前面是提取特征，后面才是分类，所以可以迁移前面的与训练模型，然后用于不同的分类任务。</p>
 <p>迁移学习的三种常见应用场合：</p>
 <ol>
 <li>任务A和B有相同的输入x：指的是任务A和B都是针对相同类型的输入数据进行处理和学习的，例如两个计算机视觉任务都是基于图像输入数据的处理。在这种情况下，可以将在任务A中学习到的知识和模型参数迁移到任务B中，以加速任务B的学习和提高其性能表现。</li>
 <li>你拥有大量任务A的数据，但是任务B的数据相对较少：这种情况下，由于缺乏足够的任务B数据，可能很难直接训练一个有效的模型。此时，可以通过迁移学习，将在任务A中学到的模型参数和知识迁移到任务B中，以充分利用已有的数据资源，提高模型性能。</li>
 <li>任务A中的低层特征可能有助于学习任务B：在一些任务中，输入数据包含许多共享的低层特征，例如图像中的边缘、纹理等，这些特征可以被任务A学习到并被迁移到任务B中，从而帮助模型更好地理解和处理任务B。</li>
 </ol>
-<h3 id="8-Multi-task-learning"><a href="#8-Multi-task-learning" class="headerlink" title="8. Multi-task learning"></a><strong>8. Multi-task learning</strong></h3><p>multi-task learning是指的是能够完成多个任务的模型</p>
+<h2 id="8-Multi-task-learning"><a href="#8-Multi-task-learning" class="headerlink" title="8. Multi-task learning"></a><strong>8. Multi-task learning</strong></h2><p>multi-task learning是指的是能够完成多个任务的模型</p>
 <p>softmax regression指的是能够实现多个类别分类的模型，而不是局限于二分类</p>
 <p>下面是multi-task learning的输出结果，不像多类别分类的softmax regression里的矩阵所有元素加起来的和为1</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421174934244.png" alt="image-20230421174934244" style="zoom:50%;">
@@ -408,7 +408,7 @@
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421175146721.png" alt="image-20230421175146721" style="zoom:50%;">
 
 <p>其中，j表示任务下标，总有c个任务</p>
-<h3 id="9-What-is-end-to-end-deep-learning"><a href="#9-What-is-end-to-end-deep-learning" class="headerlink" title="9. What is end-to-end deep learning"></a><strong>9. What is end-to-end deep learning</strong></h3><p>端到端的学习就是将之前每一步的功能都分的很细的神经网络用一个单一的神经网络给直接整合，也就是输入端到输出端中间有个神经网络，下面是语音识别中传统算法流程和端到端算法流程的区别</p>
+<h2 id="9-What-is-end-to-end-deep-learning"><a href="#9-What-is-end-to-end-deep-learning" class="headerlink" title="9. What is end-to-end deep learning"></a><strong>9. What is end-to-end deep learning</strong></h2><p>端到端的学习就是将之前每一步的功能都分的很细的神经网络用一个单一的神经网络给直接整合，也就是输入端到输出端中间有个神经网络，下面是语音识别中传统算法流程和端到端算法流程的区别</p>
 <img src="/2023/04/18/%E6%9E%84%E5%BB%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/image-20230421175619556.png" alt="image-20230421175619556" style="zoom:50%;">
 
 <p>端到端的算法流程的好处</p>
@@ -416,7 +416,7 @@
 <li>如果神经网络足够大，效果会比一般的算法要好</li>
 <li>并且作为一个整体，各个权重之间耦合度非常高</li>
 </ul>
-<h3 id="10-Whether-to-use-end-to-end-deep-learning"><a href="#10-Whether-to-use-end-to-end-deep-learning" class="headerlink" title="10. Whether to use end-to-end deep learning"></a><strong>10. Whether to use end-to-end deep learning</strong></h3><p>我们主要是根据优点和坏处来进行权衡</p>
+<h2 id="10-Whether-to-use-end-to-end-deep-learning"><a href="#10-Whether-to-use-end-to-end-deep-learning" class="headerlink" title="10. Whether to use end-to-end deep learning"></a><strong>10. Whether to use end-to-end deep learning</strong></h2><p>我们主要是根据优点和坏处来进行权衡</p>
 <p>优点:</p>
 <ul>
 <li>不需要进行组件的设计</li>
@@ -530,7 +530,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">机器学习策略（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Why-ML-Strategy"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Why ML Strategy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Orthogonalization"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. Orthogonalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Single-number-evaluation-metric"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. Single number evaluation metric</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Satisficing-and-Optimizing-metic"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. Satisficing and Optimizing metic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Train-x2F-dev-x2F-test-distributions"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. Train&#x2F;dev&#x2F;test distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Size-of-the-dev-and-test-sets"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. Size of the dev and test sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-When-to-change-dev-x2F-test-sets-and-metrics"><span class="nav-number">1.0.7.</span> <span class="nav-text">7. When to change dev&#x2F;test sets and metrics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Avoidable-bias"><span class="nav-number">1.0.8.</span> <span class="nav-text">9. Avoidable bias</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">机器学习策略（下）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Carrying-out-error-analysis"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. Carrying out error analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Cleaning-up-incorrectly-labeled-data"><span class="nav-number">2.0.2.</span> <span class="nav-text">2. Cleaning up incorrectly labeled data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Build-your-first-system-quickly-then"><span class="nav-number">2.0.3.</span> <span class="nav-text">**3. Build your first system quickly then **</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Training-and-testing-on-different-distribution"><span class="nav-number">2.0.4.</span> <span class="nav-text">4. Training and testing on different distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Bias-and-Variance-with-mismatched-data-distributions"><span class="nav-number">2.0.5.</span> <span class="nav-text">5. Bias and Variance with mismatched data distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Addressing-data-mismatch"><span class="nav-number">2.0.6.</span> <span class="nav-text">6. Addressing data mismatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Transfer-learning"><span class="nav-number">2.0.7.</span> <span class="nav-text">7. Transfer learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Multi-task-learning"><span class="nav-number">2.0.8.</span> <span class="nav-text">8. Multi-task learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-What-is-end-to-end-deep-learning"><span class="nav-number">2.0.9.</span> <span class="nav-text">9. What is end-to-end deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Whether-to-use-end-to-end-deep-learning"><span class="nav-number">2.0.10.</span> <span class="nav-text">10. Whether to use end-to-end deep learning</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">机器学习策略（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Why-ML-Strategy"><span class="nav-number">1.1.</span> <span class="nav-text">1. Why ML Strategy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Orthogonalization"><span class="nav-number">1.2.</span> <span class="nav-text">2. Orthogonalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Single-number-evaluation-metric"><span class="nav-number">1.3.</span> <span class="nav-text">3. Single number evaluation metric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Satisficing-and-Optimizing-metic"><span class="nav-number">1.4.</span> <span class="nav-text">4. Satisficing and Optimizing metic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Train-x2F-dev-x2F-test-distributions"><span class="nav-number">1.5.</span> <span class="nav-text">5. Train&#x2F;dev&#x2F;test distributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Size-of-the-dev-and-test-sets"><span class="nav-number">1.6.</span> <span class="nav-text">6. Size of the dev and test sets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-When-to-change-dev-x2F-test-sets-and-metrics"><span class="nav-number">1.7.</span> <span class="nav-text">7. When to change dev&#x2F;test sets and metrics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Avoidable-bias"><span class="nav-number">1.8.</span> <span class="nav-text">9. Avoidable bias</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">机器学习策略（下）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Carrying-out-error-analysis"><span class="nav-number">2.1.</span> <span class="nav-text">1. Carrying out error analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Cleaning-up-incorrectly-labeled-data"><span class="nav-number">2.2.</span> <span class="nav-text">2. Cleaning up incorrectly labeled data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Build-your-first-system-quickly-then"><span class="nav-number">2.3.</span> <span class="nav-text">3. Build your first system quickly then</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Training-and-testing-on-different-distribution"><span class="nav-number">2.4.</span> <span class="nav-text">4. Training and testing on different distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Bias-and-Variance-with-mismatched-data-distributions"><span class="nav-number">2.5.</span> <span class="nav-text">5. Bias and Variance with mismatched data distributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Addressing-data-mismatch"><span class="nav-number">2.6.</span> <span class="nav-text">6. Addressing data mismatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Transfer-learning"><span class="nav-number">2.7.</span> <span class="nav-text">7. Transfer learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Multi-task-learning"><span class="nav-number">2.8.</span> <span class="nav-text">8. Multi-task learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-What-is-end-to-end-deep-learning"><span class="nav-number">2.9.</span> <span class="nav-text">9. What is end-to-end deep learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Whether-to-use-end-to-end-deep-learning"><span class="nav-number">2.10.</span> <span class="nav-text">10. Whether to use end-to-end deep learning</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -546,7 +546,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -559,7 +559,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -610,13 +610,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">83k</span>
+    <span title="站点总字数">84k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:15</span>
+    <span title="站点阅读时长">1:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>

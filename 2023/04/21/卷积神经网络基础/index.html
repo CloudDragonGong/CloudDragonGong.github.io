@@ -20,28 +20,43 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="云龙博客">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="本片博客对应着吴恩达教学视频的卷积神经网络的章节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络基础">
+<meta property="og:url" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="云龙博客">
+<meta property="og:description" content="本片博客对应着吴恩达教学视频的卷积神经网络的章节">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421231818451.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421233506518.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421233456862.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421234951114.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235115855.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235125607.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235332137.png">
+<meta property="og:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230422000444127.png">
+<meta property="article:published_time" content="2023-04-21T15:12:41.000Z">
+<meta property="article:modified_time" content="2023-04-21T16:06:52.138Z">
 <meta property="article:author" content="DragonGong">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="卷积">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421231818451.png">
 
-<link rel="canonical" href="http://example.com/page/2/">
+<link rel="canonical" href="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>云龙博客</title>
+  <title>卷积神经网络基础 | 云龙博客</title>
   
 
 
@@ -149,13 +164,14 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -167,10 +183,9 @@
       <meta itemprop="name" content="云龙博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/" class="post-title-link" itemprop="url">动手学深度学习AlexNet介绍课</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          卷积神经网络基础
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -179,216 +194,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-04-08 01:15:04" itemprop="dateCreated datePublished" datetime="2023-04-08T01:15:04+08:00">2023-04-08</time>
+              <time title="创建时间：2023-04-21 23:12:41" itemprop="dateCreated datePublished" datetime="2023-04-21T23:12:41+08:00">2023-04-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-14 17:52:42" itemprop="dateModified" datetime="2023-04-14T17:52:42+08:00">2023-04-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">动手学深度学习笔记</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>AlexNet是深度学习领域的一个经典卷积神经网络模型，它于2012年在ImageNet挑战赛中夺冠，引起了深度学习研究的广泛关注。下面是AlexNet的详细通俗易懂教程：</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/08/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0AlexNet%E4%BB%8B%E7%BB%8D%E8%AF%BE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/04/java%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="DragonGong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云龙博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/04/java%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">java语法学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-04-04 12:59:11" itemprop="dateCreated datePublished" datetime="2023-04-04T12:59:11+08:00">2023-04-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-09 00:24:13" itemprop="dateModified" datetime="2023-04-09T00:24:13+08:00">2023-04-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>34k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>31 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本篇是韩顺平循循渐进学java的课堂笔记，本笔记注重理解和应用，但是很多可以在网上查阅的内容比如一些类的使用等本片笔记就不重复了，故这篇笔记能够让很多人快速入门java</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/04/java%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/02/%E4%BC%98%E5%8C%96%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="DragonGong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云龙博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/04/02/%E4%BC%98%E5%8C%96%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">优化深度神经网络</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-04-02 17:51:35" itemprop="dateCreated datePublished" datetime="2023-04-02T17:51:35+08:00">2023-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-13 22:31:27" itemprop="dateModified" datetime="2023-04-13T22:31:27+08:00">2023-04-13</time>
+                <time title="修改时间：2023-04-22 00:06:52" itemprop="dateModified" datetime="2023-04-22T00:06:52+08:00">2023-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -404,119 +217,27 @@
                 </span>
             </span>
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本片笔记从是<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FT4y1E74V/?spm_id_from=333.999.0.0">吴恩达教授</a>的学习笔记，以及配套的<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44543774/article/details/119154088?spm=1001.2014.3001.5506">博客</a>梳理，方便巩固复习和完成编程作业。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/02/%E4%BC%98%E5%8C%96%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/02/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="DragonGong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云龙博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/04/02/hello-world/" class="post-title-link" itemprop="url">leetcode算法笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="eye"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-04-02 01:50:04 / 修改时间：17:05:48" itemprop="dateCreated datePublished" datetime="2023-04-02T01:50:04+08:00">2023-04-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA4%E5%A4%A7%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">计算机4大件</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA4%E5%A4%A7%E4%BB%B6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA4%E5%A4%A7%E4%BB%B6/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-                </span>
-            </span>
-
-          <br>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
+              <span>840</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -528,34 +249,114 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="leetcode算法笔记"><a href="#leetcode算法笔记" class="headerlink" title="leetcode算法笔记"></a>leetcode算法笔记</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/04/02/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <blockquote>
+<p>本片博客对应着<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1FT4y1E74V?p=84&vd_source=8e348c918e9f7eca8805bd4e1debb74a">吴恩达教学视频</a>的卷积神经网络的章节</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="1-Computer-Vision"><a href="#1-Computer-Vision" class="headerlink" title="1. Computer Vision"></a><strong>1. Computer Vision</strong></h3><p>计算机视觉的目标任务</p>
+<ul>
+<li>物体分类</li>
+<li>神经风格迁移</li>
+<li>目标分割</li>
+</ul>
+<blockquote>
+<p>神经风格迁移（Neural Style Transfer）：它是一种用于将两个不同图像的风格进行合成的技术。这个任务的目标是训练一个模型来将一张输入图像的内容与另一张参考图像的风格进行合成，生成一张新的图像，使其看起来既保留了原始图像的内容，又采用了参考图像的风格。这种技术可以用于图像编辑、图像生成等应用领域。</p>
+</blockquote>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421231818451.png" alt="image-20230421231818451" style="zoom:50%;">
+
+<p>传统神经网络的问题就是由于一个图片直接放入神经网络参数太多，导致神经节点的数量太多，权重的数量庞大，没那么多算力，卷积可以减少计算量</p>
+<h3 id="2-Edge-Detection-Example"><a href="#2-Edge-Detection-Example" class="headerlink" title="2. Edge Detection Example"></a><strong>2. Edge Detection Example</strong></h3><p>边缘有两种最常见的边缘</p>
+<ul>
+<li>垂直的边缘</li>
+<li>水平的边缘</li>
+</ul>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421233506518.png" alt="image-20230421233506518" style="zoom:50%;">
+
+
+
+<p>提取边缘的特征（比如我是想提取垂直的还是想提取水平的）方式就要看卷积核的值取得怎么样，下面是提取垂直的特征，可以思考一下为什么这样设值是可以提取到垂直特征的，怎么样设可以提取到水平特征。</p>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421233456862.png" alt="image-20230421233456862" style="zoom:50%;">
+
+<h3 id="3-More-Edge-Detection"><a href="#3-More-Edge-Detection" class="headerlink" title="3. More Edge Detection"></a><strong>3. More Edge Detection</strong></h3><p>假设要提取垂直的边缘特征</p>
+<p>有两种渐变会产生边缘效果</p>
+<ul>
+<li>从亮变暗</li>
+<li>从暗变亮</li>
+</ul>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421234951114.png" alt="image-20230421234951114" style="zoom:50%;">
+
+<p>可以发现这个效果经过卷积核之后并没有发生改变，也就是特征提取出来了</p>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235115855.png" alt="image-20230421235115855" style="zoom:50%;">
+
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235125607.png" alt="image-20230421235125607" style="zoom:50%;">
+
+<p>但是我们不仅仅是提取简单的水平和垂直</p>
+<p>我们要提取很多别的特征</p>
+<p>这样的话就要设计算子，其他的算子</p>
+<p>Sobel filter和Scharr filter</p>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230421235332137.png" alt="image-20230421235332137" style="zoom:50%;">
+
+<p>在深度学习中，卷积核是通过cnn训练学习得到的，cnn就是求出卷积核的数值，这样就可以针对性得更好的提取特征</p>
+<p><strong>4. Padding</strong></p>
+<p>俗称补零操作</p>
+<p>上面发生卷积后图片的尺寸减小了，并且在进行卷积操作的时候，原始图片的边上那些像素点参与卷积运算的很少</p>
+<p>为了让边上的像素点能够参与卷积运算，进行补零操作</p>
+<img src="/2023/04/21/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/image-20230422000444127.png" alt="image-20230422000444127" style="zoom:67%;">
+
+<p>没有padding操作，$p &#x3D; 0$,称为“Valid convolutions”；</p>
+<p>有padding操作，$p&#x3D;\frac{f-1}{2}$，我们称之为“Same convolutions”。</p>
+<p><strong>5. Strided Convolutions</strong></p>
+
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="DragonGong 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="DragonGong 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+              <a href="/tags/%E5%8D%B7%E7%A7%AF/" rel="tag"><i class="fa fa-tag"></i> 卷积</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/20/git%E7%AC%94%E8%AE%B0/" rel="prev" title="git笔记">
+      <i class="fa fa-chevron-left"></i> git笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
 
 
 
@@ -607,6 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Computer-Vision"><span class="nav-number">1.</span> <span class="nav-text">1. Computer Vision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Edge-Detection-Example"><span class="nav-number">2.</span> <span class="nav-text">2. Edge Detection Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-More-Edge-Detection"><span class="nav-number">3.</span> <span class="nav-text">3. More Edge Detection</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
